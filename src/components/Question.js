@@ -1,4 +1,15 @@
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
+
+Question.propTypes = {
+  question: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentStep: PropTypes.number.isRequired,
+  totalSteps: PropTypes.number.isRequired,
+  steps: PropTypes.number.isRequired,
+  onUpdateSteps: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+}
 
 export default function Question({
   question,
