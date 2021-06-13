@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Question from './Question'
 
 Form.propTypes = {
   questions: PropTypes.arrayOf(
@@ -22,32 +23,18 @@ export default function Form({ questions, onSaveHouse }) {
 
   return (
     <FormStyled onSubmit={handleSubmit}>
-      {questions.map(({ question, options, id }, index) => {
-        if (steps !== index) return null
-        return (
-          <div key={id}>
-            <fieldset>
-              <legend>{question}</legend>
-              {options.map(option => (
-                <label key={option}>
-                  {option}
-                  <input
-                    type="radio"
-                    name={question}
-                    value={option}
-                    onChange={handleChange}
-                  />
-                </label>
-              ))}
-            </fieldset>
-            {index !== totalSteps ? (
-              <button onClick={updateSteps}>Next</button>
-            ) : (
-              <button>Submit</button>
-            )}
-          </div>
-        )
-      })}
+      {questions.map(({ question, options, id }, index) => (
+        <Question
+          question={question}
+          options={options}
+          key={id}
+          currentStep={index}
+          totalSteps={totalSteps}
+          steps={steps}
+          onUpdateSteps={updateSteps}
+          onChange={handleChange}
+        />
+      ))}
     </FormStyled>
   )
 
