@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 Form.propTypes = {
   questions: PropTypes.arrayOf(
@@ -15,26 +16,38 @@ Form.propTypes = {
 
 export default function Form({ questions, onSaveHouse }) {
   const [formData, setFormData] = useState({})
+  const [steps, setSteps] = useState(0)
+
+  const totalSteps = questions.length - 1
 
   return (
     <form onSubmit={handleSubmit}>
-      {questions.map(({ question, options, id }) => (
-        <fieldset key={id}>
-          <legend>{question}</legend>
-          {options.map(option => (
-            <label key={option}>
-              {option}
-              <input
-                type="radio"
-                name={question}
-                value={option}
-                onChange={handleChange}
-              />
-            </label>
-          ))}
-        </fieldset>
-      ))}
-      <button>Submit</button>
+      {questions.map(({ question, options, id }, index) => {
+        if (steps !== index) return null
+        return (
+          <div key={id}>
+            <fieldset>
+              <legend>{question}</legend>
+              {options.map(option => (
+                <label key={option}>
+                  {option}
+                  <input
+                    type="radio"
+                    name={question}
+                    value={option}
+                    onChange={handleChange}
+                  />
+                </label>
+              ))}
+            </fieldset>
+            {index !== totalSteps ? (
+              <button onClick={updateSteps}>Next</button>
+            ) : (
+              <button>Submit</button>
+            )}
+          </div>
+        )
+      })}
     </form>
   )
 
@@ -49,5 +62,9 @@ export default function Form({ questions, onSaveHouse }) {
   function handleSubmit(event) {
     event.preventDefault()
     onSaveHouse(formData)
+  }
+
+  function updateSteps() {
+    setSteps(steps => steps + 1)
   }
 }
