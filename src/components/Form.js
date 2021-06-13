@@ -21,7 +21,7 @@ export default function Form({ questions, onSaveHouse }) {
   const totalSteps = questions.length - 1
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormStyled onSubmit={handleSubmit}>
       {questions.map(({ question, options, id }, index) => {
         if (steps !== index) return null
         return (
@@ -48,7 +48,7 @@ export default function Form({ questions, onSaveHouse }) {
           </div>
         )
       })}
-    </form>
+    </FormStyled>
   )
 
   function handleChange(event) {
@@ -68,3 +68,8 @@ export default function Form({ questions, onSaveHouse }) {
     setSteps(steps => steps + 1)
   }
 }
+
+const FormStyled = styled.form`
+  max-width: 800px;
+  padding: 20px;
+`
