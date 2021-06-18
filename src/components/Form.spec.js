@@ -2,8 +2,9 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Form from './Form'
 
+const noop = () => {}
+
 describe('Form', () => {
-  const noop = jest.fn()
   it('should render a group of radio buttons and a button', () => {
     render(
       <Form
