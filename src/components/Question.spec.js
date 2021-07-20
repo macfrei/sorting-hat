@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Question from './Question'
 
 const noop = () => {}
@@ -17,5 +18,18 @@ describe('Question', () => {
     ).toBeInTheDocument()
     expect(screen.getByLabelText('Dusk')).toBeInTheDocument()
     expect(screen.getByLabelText('Dawn')).toBeInTheDocument()
+  })
+
+  it('should call onChange', () => {
+    const handleChange = jest.fn()
+    render(
+      <Question
+        question="Dusk or Dawn?"
+        options={['Dusk', 'Dawn']}
+        onChange={handleChange}
+      />
+    )
+    userEvent.click(screen.getByLabelText('Dusk'))
+    expect(handleChange).toHaveBeenCalled()
   })
 })
