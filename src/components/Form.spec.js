@@ -23,7 +23,32 @@ describe('Form', () => {
     expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument()
   })
 
-  it('should render a button with text "submit" when at last question and call onSaveHouse with form data', () => {
+  it('should render a button with text "submit" when at last question', () => {
+    render(
+      <Form
+        questions={[
+          {
+            id: 1,
+            question: 'Dawn or dusk?',
+            options: ['Dawn', 'Dusk'],
+          },
+          {
+            id: 2,
+            question: 'Forest or river?',
+            options: ['Forest', 'River'],
+          },
+        ]}
+        onSaveHouse={noop}
+      />
+    )
+    const nextButton = screen.getByRole('button', { name: /next/i })
+    userEvent.click(nextButton)
+
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+    expect(submitButton).toBeInTheDocument()
+  })
+
+  it('should call onSaveHouse with form data', () => {
     const saveHouse = jest.fn()
     render(
       <Form
