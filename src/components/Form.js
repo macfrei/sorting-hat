@@ -17,24 +17,21 @@ Form.propTypes = {
 
 export default function Form({ questions, onSaveHouse }) {
   const [formData, setFormData] = useState({})
-  const [steps, setSteps] = useState(0)
+  const [currentStep, setCurrentStep] = useState(0)
 
   const totalSteps = questions.length - 1
+  const { question, options } = questions[currentStep]
 
   return (
     <FormStyled onSubmit={handleSubmit}>
-      {questions.map(({ question, options, id }, index) => (
-        <Question
-          question={question}
-          options={options}
-          key={id}
-          currentStep={index}
-          totalSteps={totalSteps}
-          steps={steps}
-          onUpdateSteps={updateSteps}
-          onChange={handleChange}
-        />
-      ))}
+      <Question question={question} options={options} onChange={handleChange} />
+      {currentStep !== totalSteps ? (
+        <button type="button" onClick={advanceStep}>
+          Next
+        </button>
+      ) : (
+        <button>Submit</button>
+      )}
     </FormStyled>
   )
 
@@ -51,8 +48,8 @@ export default function Form({ questions, onSaveHouse }) {
     onSaveHouse(formData)
   }
 
-  function updateSteps() {
-    setSteps(steps => steps + 1)
+  function advanceStep() {
+    setCurrentStep(steps => steps + 1)
   }
 }
 
