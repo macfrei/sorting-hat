@@ -1,0 +1,224 @@
+[
+  {
+    "id": 1,
+    "question": "Dawn or dusk?",
+    "options": ["Dawn", "Dusk"],
+    "answers": {
+      "Gryffindor": "Dawn",
+      "Ravenclaw": "Dawn",
+      "Hufflepuff": "Dusk",
+      "Slytherin": "Dusk"
+    }
+  },
+  {
+    "id": 2,
+    "question": "Forest or river?",
+    "options": ["Forest", "River"],
+    "answers": {
+      "Gryffindor": "Forest",
+      "Ravenclaw": "Forest",
+      "Hufflepuff": "River",
+      "Slytherin": "River"
+    }
+  },
+  {
+    "id": 3,
+    "question": "Four boxes are placed before you. Which would you try and open?",
+    "options": [
+      "The small tortoiseshell box, embellished with gold, inside which some small creature seems to be squeaking.",
+      "The gleaming jet black box with a silver lock and key, marked with a mysterious rune that you know to be the mark of Merlin.",
+      "The ornate golden casket, standing on clawed feet, whose inscription warns that both secret knowledge and unbearable temptation lie within.",
+      "The small pewter box, unassuming and plain, with a scratched message upon it that reads ‘I open only for the worthy.’"
+    ],
+    "answers": {
+      "Gryffindor": "The small pewter box, unassuming and plain, with a scratched message upon it that reads ‘I open only for the worthy.’",
+      "Ravenclaw": "The ornate golden casket, standing on clawed feet, whose inscription warns that both secret knowledge and unbearable temptation lie within.",
+      "Hufflepuff": "The small tortoiseshell box, embellished with gold, inside which some small creature seems to be squeaking.",
+      "Slytherin": "The gleaming jet black box with a silver lock and key, marked with a mysterious rune that you know to be the mark of Merlin."
+    }
+  },
+  {
+    "id": 4,
+    "question": "Once every century, the Flutterby bush produces flowers that adapt their scent to attract the unwary. If it lured you, it would smell of:",
+    "options": ["A crackling log fire", "The sea", "Fresh parchment", "Home"],
+    "answers": {
+      "Gryffindor": "A crackling log fire",
+      "Ravenclaw": "Fresh parchment",
+      "Hufflepuff": "Home",
+      "Slytherin": "The sea"
+    }
+  },
+  {
+    "id": 5,
+    "question": "One of your house mates has cheated in a Hogwarts exam by using a Self-Spelling Quill. Now he has come top of the class in Charms, beating you into second place. Professor Flitwick is suspicious of what happened. He draws you to one side after his lesson and asks you whether or not your classmate used a forbidden quill. What do you do?",
+    "options": [
+      "Lie and say you don’t know (but hope that somebody else tells Professor Flitwick the truth).",
+      "Tell Professor Flitwick that he ought to ask your classmate (and resolve to tell your classmate that if he doesn’t tell the truth, you will).",
+      "Tell Professor Flitwick the truth. If your classmate is prepared to win by cheating, he deserves to be found out. Also, as you are both in the same house, any points he loses will be regained by you, for coming first in his place.",
+      "You would not wait to be asked to tell Professor Flitwick the truth. If you knew that somebody was using a forbidden quill, you would tell the teacher before the exam started."
+    ],
+    "answers": {
+      "Gryffindor": "Tell Professor Flitwick that he ought to ask your classmate (and resolve to tell your classmate that if he doesn’t tell the truth, you will).",
+      "Ravenclaw": "Tell Professor Flitwick the truth. If your classmate is prepared to win by cheating, he deserves to be found out. Also, as you are both in the same house, any points he loses will be regained by you, for coming first in his place.",
+      "Hufflepuff": "Lie and say you don’t know (but hope that somebody else tells Professor Flitwick the truth).",
+      "Slytherin": "You would not wait to be asked to tell Professor Flitwick the truth. If you knew that somebody was using a forbidden quill, you would tell the teacher before the exam started."
+    }
+  },
+  {
+    "id": 6,
+    "question": "Which of the following do you find most difficult to deal with?",
+    "options": ["Hunger", "Cold", "Loneliness", "Boredom"],
+    "answers": {
+      "Gryffindor": "Loneliness",
+      "Ravenclaw": "Hunger",
+      "Hufflepuff": "Cold",
+      "Slytherin": "Boredom"
+    }
+  },
+  {
+    "id": 7,
+    "question": "You enter an enchanted garden. What would you be most curious to examine first?",
+    "options": [
+      "The silver leafed tree bearing golden apples",
+      "The fat red toadstools that appear to be talking to each other",
+      "The bubbling pool, in the depths of which something luminous is swirling",
+      "The statue of an old wizard with a strangely twinkling eye"
+    ],
+    "answers": {
+      "Gryffindor": "The statue of an old wizard with a strangely twinkling eye",
+      "Ravenclaw": "The silver leafed tree bearing golden apples",
+      "Hufflepuff": "The fat red toadstools that appear to be talking to each other",
+      "Slytherin": "The bubbling pool, in the depths of which something luminous is swirling"
+    }
+  },
+  {
+    "id": 8,
+    "question": "Which of the following would you most hate people to call you?",
+    "options": ["Cowardly", "Ignorant", "Selfish", "Ordinary"],
+    "answers": {
+      "Gryffindor": "Cowardly",
+      "Ravenclaw": "Ignorant",
+      "Hufflepuff": "Selfish",
+      "Slytherin": "Ordinary"
+    }
+  },
+  {
+    "id": 9,
+    "question": "After you have died, what would you most like people to do when they hear your name?",
+    "options": [
+      "Miss you, but smile",
+      "Ask for more stories about your adventures",
+      "Think with admiration of your achievements",
+      "I don't care what people think of me after I'm dead; it's what they think of me while I'm alive that counts"
+    ],
+    "answers": {
+      "Gryffindor": "Ask for more stories about your adventures",
+      "Ravenclaw": "Think with admiration of your achievements",
+      "Hufflepuff": "Miss you, but smile",
+      "Slytherin": "I don't care what people think of me after I'm dead; it's what they think of me while I'm alive that counts"
+    }
+  },
+  {
+    "id": 10,
+    "question": "How would you like to be known to history?",
+    "options": ["The Wise", "The Good", "The Great", "The Bold"],
+    "answers": {
+      "Gryffindor": "The Bold",
+      "Ravenclaw": "The Wise",
+      "Hufflepuff": "The Good",
+      "Slytherin": "The Great"
+    }
+  },
+  {
+    "id": 11,
+    "question": "If you were attending Hogwarts, which pet would you choose to take with you?",
+    "options": [
+      "Tabby cat",
+      "Siamese cat",
+      "Ginger cat",
+      "Black cat",
+      "Tawny owl",
+      "Screech owl",
+      "Snowy owl",
+      "Barn owl",
+      "Common toad",
+      "Natterjack toad",
+      "Dragon toad",
+      "Harlequin toad",
+      "Three toed tree toad"
+    ],
+    "answers": {
+      "Gryffindor": ["Dragon toad", "Tabby cat"],
+      "Ravenclaw": ["Brown owl", "Barn owl"],
+      "Hufflepuff": ["Common toad", "Natterjack toad"],
+      "Slytherin": ["Siamese cat", "Ginger cat"]
+    }
+  },
+  {
+    "id": 12,
+    "question": "Given the choice, would you rather invent a potion that would guarantee you:",
+    "options": ["Love", "Glory", "Wisdom", "Power"],
+    "answers": {
+      "Gryffindor": "Glory",
+      "Ravenclaw": "Wisdom",
+      "Hufflepuff": "Love",
+      "Slytherin": "Power"
+    }
+  },
+  {
+    "id": 13,
+    "question": "If you could have any power, which would you choose",
+    "options": [
+      "The power to read minds",
+      "The power of invisibility",
+      "The power of superhuman strength",
+      "The power to speak to animals",
+      "The power to change the past",
+      "The power to change your appearance at will"
+    ],
+    "answers": {
+      "Gryffindor": ["The power of invisibility"],
+      "Ravenclaw": [
+        "The power to change your appearance at will",
+        "The power to read minds"
+      ],
+      "Hufflepuff": [
+        "The power of superhuman strength",
+        "The power to speak to animals"
+      ],
+      "Slytherin": ["The power to change the past"]
+    }
+  },
+  {
+    "id": 14,
+    "question": "What are you most looking forward to learning at Hogwarts?",
+    "options": [
+      "Apparition and Disapparition",
+      "Transfiguration",
+      "Flying on a broomstick",
+      "Hexes and jinxes",
+      "All about magical creatures, and how to befriend/care for them",
+      "Secrets about the castle",
+      "Every area of magic I can"
+    ],
+    "answers": {
+      "Gryffindor": ["Secrets about the castle", "Flying on a broomstick"],
+      "Ravenclaw": ["Transfiguration", "Every area of magic I can"],
+      "Hufflepuff": [
+        "All about magical creatures, and how to befriend/care for them"
+      ],
+      "Slytherin": ["Hexes and jinxes", "Apparition and Disapparition"]
+    }
+  },
+  {
+    "id": 15,
+    "question": "What kind of instrument most pleases your ear?",
+    "options": ["The violin", "The trumpet", "The piano", "The drum"],
+    "answers": {
+      "Gryffindor": "The drum",
+      "Ravenclaw": "The piano",
+      "Hufflepuff": "The trumpet",
+      "Slytherin": "The violin"
+    }
+  }
+]
