@@ -31,4 +31,10 @@ const QuestionStyled = styled.fieldset`
   gap: 16px;
   border: none;
   justify-content: space-evenly;
+
+  input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
 `
