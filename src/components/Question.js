@@ -32,6 +32,10 @@ const QuestionStyled = styled.fieldset`
   border: none;
   justify-content: space-evenly;
 
+  label:focus-within {
+    border: 2px solid navy;
+  }
+
   input {
     width: 0;
     height: 0;
