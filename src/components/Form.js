@@ -22,16 +22,17 @@ export default function Form({ questions, onSaveHouse }) {
   const totalSteps = questions.length - 1
   const { question, options } = questions[currentStep]
 
+  console.log(currentStep === totalSteps)
+
   return (
     <FormStyled onSubmit={handleSubmit}>
       <Question question={question} options={options} onChange={handleChange} />
-      {currentStep !== totalSteps ? (
+      {currentStep !== totalSteps && (
         <button type="button" onClick={advanceStep}>
           Next
         </button>
-      ) : (
-        <button>Submit</button>
       )}
+      {currentStep === totalSteps && <button>Submit</button>}
     </FormStyled>
   )
 
@@ -44,6 +45,7 @@ export default function Form({ questions, onSaveHouse }) {
   }
 
   function handleSubmit(event) {
+    console.log('fire submit event')
     event.preventDefault()
     onSaveHouse(formData)
   }
