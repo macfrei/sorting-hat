@@ -27,16 +27,50 @@ export default function Question({ question, options, onChange }) {
 }
 
 const QuestionStyled = styled.fieldset`
-  display: flex;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 12px;
+  border: none;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border-radius: 8px;
+  overflow-y: auto;
+
+  legend {
+    text-align: center;
+    color: var(--gryffindor-gold);
+    font-size: 120%;
+  }
+
+  legend::first-letter {
+    font-size: 130%;
+    font-family: serif;
+  }
+
+  label {
+    position: relative;
+    padding: 12px;
+    display: block;
+    display: flex;
   gap: 16px;
   border: none;
   justify-content: space-evenly;
 
   label:focus-within {
-    border: 2px solid navy;
+    background: var(--gryffindor-gold);
+    color: white;
+  }
+
+  input[type='radio']:checked + label {
+    background: var(--gryffindor-gold);
+    color: white;
   }
 
   input {
+    position: absolute;
     width: 0;
     height: 0;
     opacity: 0;

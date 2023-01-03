@@ -53,6 +53,11 @@ export default function Form({ questions, onSaveHouse }) {
 }
 
 const FormStyled = styled.form`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 60px;
+  gap: 12px;
+  margin: 0 auto;
   max-width: 800px;
   padding: 20px;
 `
