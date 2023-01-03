@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Question from './Question'
+import useAdvanceStep from '../hooks/useAdvanceStep'
 
 Form.propTypes = {
   questions: PropTypes.arrayOf(
@@ -17,7 +18,8 @@ Form.propTypes = {
 
 export default function Form({ questions, onSaveHouse }) {
   const [formData, setFormData] = useState({})
-  const [currentStep, setCurrentStep] = useState(0)
+
+  const { currentStep, advanceStep } = useAdvanceStep()
 
   const totalSteps = questions.length - 1
   const { question, options } = questions[currentStep]
@@ -46,10 +48,6 @@ export default function Form({ questions, onSaveHouse }) {
     event.preventDefault()
     onSaveHouse(formData)
   }
-
-  function advanceStep() {
-    setCurrentStep(steps => steps + 1)
-  }
 }
 
 const FormStyled = styled.form`
@@ -60,4 +58,14 @@ const FormStyled = styled.form`
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+
+  button {
+    padding: 8px;
+    border: none;
+    background: transparent;
+    color: var(--gryffindor-gold);
+    font-family: serif;
+    border: 1px solid var(--gryffindor-gold);
+    border-radius: 8px;
+  }
 `

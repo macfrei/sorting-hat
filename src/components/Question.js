@@ -9,7 +9,7 @@ Question.propTypes = {
 
 export default function Question({ question, options, onChange }) {
   return (
-    <QuestionStyled>
+    <QuestionStyled id="focus-target">
       <legend>{question}</legend>
       {options.map(option => (
         <label key={option}>
