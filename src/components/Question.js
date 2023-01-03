@@ -40,6 +40,7 @@ const QuestionStyled = styled.fieldset`
   overflow-y: auto;
 
   legend {
+    width: 100%;
     text-align: center;
     color: var(--gryffindor-gold);
     font-size: 120%;
@@ -54,10 +55,15 @@ const QuestionStyled = styled.fieldset`
     position: relative;
     padding: 12px;
     display: block;
-    display: flex;
-  gap: 16px;
-  border: none;
-  justify-content: space-evenly;
+    display: grid;
+    place-items: center;
+    width: inherit;
+    height: inherit;
+    border-radius: 8px;
+    background-color: var(--slytherin-silver);
+    color: white;
+    transition: color 2s, background-color 2s;
+  }
 
   label:focus-within {
     background: var(--gryffindor-gold);
