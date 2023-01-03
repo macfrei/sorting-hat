@@ -20,7 +20,7 @@ describe('Form', () => {
     )
     expect(screen.getByLabelText('Dawn')).toBeInTheDocument()
     expect(screen.getByLabelText('Dusk')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /reveal/i })).toBeInTheDocument()
   })
 
   it('should render a button with text "submit" when at last question', () => {
@@ -44,7 +44,7 @@ describe('Form', () => {
     const nextButton = screen.getByRole('button', { name: /next/i })
     userEvent.click(nextButton)
 
-    const submitButton = screen.getByRole('button', { name: /submit/i })
+    const submitButton = screen.getByRole('button', { name: /reveal/i })
     expect(submitButton).toBeInTheDocument()
   })
 
@@ -72,7 +72,7 @@ describe('Form', () => {
     userEvent.click(nextButton)
 
     userEvent.click(screen.getByLabelText('River'))
-    const submitButton = screen.getByRole('button', { name: /submit/i })
+    const submitButton = screen.getByRole('button', { name: /reveal/i })
     userEvent.click(submitButton)
     expect(saveHouse).toHaveBeenCalledWith({
       'Dawn or dusk?': 'Dawn',

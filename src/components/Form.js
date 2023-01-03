@@ -27,10 +27,10 @@ export default function Form({ questions, onSaveHouse }) {
       <Question question={question} options={options} onChange={handleChange} />
       {currentStep !== totalSteps && (
         <button type="button" onClick={advanceStep}>
-          Next
+          Next Question
         </button>
       )}
-      {currentStep === totalSteps && <button>Submit</button>}
+      {currentStep === totalSteps && <button>Reveal Hogwarts house!</button>}
     </FormStyled>
   )
 
