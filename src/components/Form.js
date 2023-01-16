@@ -22,14 +22,14 @@ export default function Form({ questions, onSaveHouse }) {
   const { currentStep, advanceStep, ref } = useAdvanceStep()
 
   const totalSteps = questions.length - 1
-  const { question, options } = questions[currentStep]
+  const { question, options, id } = questions[currentStep]
 
   return (
     <FormStyled onSubmit={handleSubmit} aria-label="Hogwarts House Quiz">
       <Question
         question={question}
         options={options}
-        onChange={handleChange}
+        onChange={event => handleChange(event, id)}
         ref={ref}
       />
       {currentStep !== totalSteps && (
@@ -43,11 +43,16 @@ export default function Form({ questions, onSaveHouse }) {
     </FormStyled>
   )
 
-  function handleChange(event) {
+  function handleChange(event, id) {
     const { name, value } = event.target
+
     setFormData({
       ...formData,
-      [name]: value,
+      [id]: {
+        id,
+        question: name,
+        answer: value,
+      },
     })
   }
 

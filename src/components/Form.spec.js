@@ -76,8 +76,16 @@ describe('Form', () => {
     const submitButton = screen.getByRole('button', { name: /reveal/i })
     userEvent.click(submitButton)
     expect(saveHouse).toHaveBeenCalledWith({
-      'Dawn or dusk?': 'Dawn',
-      'Forest or river?': 'River',
+      1: {
+        answer: 'Dawn',
+        id: 1,
+        question: 'Dawn or dusk?',
+      },
+      2: {
+        answer: 'River',
+        id: 2,
+        question: 'Forest or river?',
+      },
     })
   })
 })
