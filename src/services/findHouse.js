@@ -1,33 +1,26 @@
 export default function findHouse(quizResults, questionArray) {
-  const houseQuizAnswers = Object.entries(quizResults)
+  const houseQuizResults = Object.values(quizResults)
 
-  if (!houseQuizAnswers.length)
-    return 'Something is wrong with your data, Muggle!'
+  if (!houseQuizResults.length) {
+    console.error('Something is wrong with your data, Muggle!')
+    return undefined
+  }
 
-  const listOfHousesAccordingToAnswers = houseQuizAnswers.flatMap(
-    answerArray => {
-      const associatedQuestion = questionArray.find(
-        el => el.question === answerArray[0]
-      )
-      const possibleAnswers = Object.entries(associatedQuestion.answers) // [[house, answer], ...]
+  const houses = houseQuizResults.flatMap(quizResult => {
+    const associatedQuestion = questionArray.find(
+      question => question.id === quizResult.id
+    )
+    const house = associatedQuestion.answers[quizResult.answer]
 
-      const houses = possibleAnswers
-        .filter(answer => {
-          // Because answer could be an array of multiple possibilities
-          if (answer.filter(e => e.includes(answerArray[1])).length > 0) {
-            return answer
-          }
+    return house
+  })
 
-          return answer.includes(answerArray[1])
-        })
-        .map(possibleAnswer => possibleAnswer[0]) // Corresponding house
+  return getHighestOccurrence(houses)
+}
 
-      return houses
-    }
-  )
-
+function getHighestOccurrence(houses) {
   const house = Object.entries(
-    listOfHousesAccordingToAnswers.reduce((acc, cur) => {
+    houses.reduce((acc, cur) => {
       if (cur in acc) {
         acc[cur]++
       } else {

@@ -1,9 +1,16 @@
 import findHouse from './findHouse'
 
-const data = {
-  'Dawn or dusk?': 'Dawn',
-  'Which of the following do you find most difficult to deal with?':
-    'Loneliness',
+const quizResults = {
+  1: {
+    id: 1,
+    answer: 'Dawn',
+    question: 'Dawn or dusk?',
+  },
+  6: {
+    id: 6,
+    answer: 'Loneliness',
+    question: 'Which of the following do you find most difficult to deal with?',
+  },
 }
 
 const questionArray = [
@@ -12,10 +19,10 @@ const questionArray = [
     question: 'Which of the following do you find most difficult to deal with?',
     options: ['Hunger', 'Cold', 'Loneliness', 'Boredom'],
     answers: {
-      Gryffindor: 'Loneliness',
-      Ravenclaw: 'Hunger',
-      Hufflepuff: 'Cold',
-      Slytherin: 'Boredom',
+      Loneliness: ['Gryffindor'],
+      Hunger: ['Ravenclaw'],
+      Cold: ['Hufflepuff'],
+      Boredom: ['Slytherin'],
     },
   },
   {
@@ -23,24 +30,22 @@ const questionArray = [
     question: 'Dawn or dusk?',
     options: ['Dawn', 'Dusk'],
     answers: {
-      Gryffindor: 'Dawn',
-      Ravenclaw: 'Dawn',
-      Hufflepuff: 'Dusk',
-      Slytherin: 'Dusk',
+      Dawn: ['Gryffindor', 'Ravenclaw'],
+      Dusk: ['Hufflepuff', 'Slytherin'],
     },
   },
 ]
 
 describe('findHouse function', () => {
   it('reveices an object and returns a string', () => {
-    const result = findHouse(data, questionArray)
+    const result = findHouse(quizResults, questionArray)
 
     expect(result).toBe('Gryffindor')
   })
 
-  it('returns an error message if no correct data is received', () => {
+  it('returns undefined if no correct data is received', () => {
     const result = findHouse({}, questionArray)
 
-    expect(result).toBe('Something is wrong with your data, Muggle!')
+    expect(result).toBe(undefined)
   })
 })
