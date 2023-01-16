@@ -1,15 +1,13 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import { forwardRef } from 'react'
 
-Question.propTypes = {
-  question: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChange: PropTypes.func.isRequired,
-}
-
-export default function Question({ question, options, onChange }) {
+const Question = forwardRef(function Question(
+  { question, options, onChange },
+  ref
+) {
   return (
-    <QuestionStyled id="focus-target">
+    <QuestionStyled ref={ref}>
       <legend>{question}</legend>
       {options.map(option => (
         <label key={option}>
@@ -24,6 +22,14 @@ export default function Question({ question, options, onChange }) {
       ))}
     </QuestionStyled>
   )
+})
+
+export default Question
+
+Question.propTypes = {
+  question: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 const QuestionStyled = styled.fieldset`

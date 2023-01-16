@@ -1,16 +1,19 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 function useAdvanceStep() {
+  const ref = useRef(null)
+
   const [currentStep, setCurrentStep] = useState(0)
 
   const scrollTop = () => window.scrollTo({ x: 0 })
+
   const changeTitle = title => (document.title = title)
+
   const setFocus = () => {
     setTimeout(() => {
-      const focusTarget = document.getElementById('focus-target')
-      focusTarget.setAttribute('tabindex', '-1')
-      focusTarget.focus()
-      focusTarget.removeAttribute('tabindex')
+      ref.current.setAttribute('tabindex', '-1')
+      ref.current.focus()
+      ref.current.removeAttribute('tabindex')
     }, 0)
   }
 
@@ -24,6 +27,7 @@ function useAdvanceStep() {
   return {
     currentStep,
     advanceStep,
+    ref,
   }
 }
 

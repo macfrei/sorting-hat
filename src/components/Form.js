@@ -19,18 +19,23 @@ Form.propTypes = {
 export default function Form({ questions, onSaveHouse }) {
   const [formData, setFormData] = useState({})
 
-  const { currentStep, advanceStep } = useAdvanceStep()
+  const { currentStep, advanceStep, ref } = useAdvanceStep()
 
   const totalSteps = questions.length - 1
   const { question, options } = questions[currentStep]
 
   return (
-    <FormStyled onSubmit={handleSubmit}>
-      <Question question={question} options={options} onChange={handleChange} />
+    <FormStyled onSubmit={handleSubmit} aria-label="Hogwarts House Quiz">
+      <Question
+        question={question}
+        options={options}
+        onChange={handleChange}
+        ref={ref}
+      />
       {currentStep !== totalSteps && (
         <Button type="button" onClick={advanceStep}>
           Next Question
-        </button>
+        </Button>
       )}
       {currentStep === totalSteps && (
         <Button type="submit">Reveal Hogwarts house!</Button>
@@ -60,6 +65,7 @@ const FormStyled = styled.form`
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+`
 
 const Button = styled.button`
   padding: 8px;
@@ -69,5 +75,4 @@ const Button = styled.button`
   font-family: serif;
   border: 1px solid var(--gryffindor-gold);
   border-radius: 8px;
-  }
 `
