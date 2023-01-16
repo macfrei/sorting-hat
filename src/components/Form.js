@@ -24,6 +24,8 @@ export default function Form({ questions, onSaveHouse }) {
   const totalSteps = questions.length - 1
   const { question, options, id } = questions[currentStep]
 
+  const buttonIsDisabled = !formData[id]
+
   return (
     <FormStyled onSubmit={handleSubmit} aria-label="Hogwarts House Quiz">
       <Question
@@ -33,12 +35,14 @@ export default function Form({ questions, onSaveHouse }) {
         ref={ref}
       />
       {currentStep !== totalSteps && (
-        <Button type="button" onClick={advanceStep}>
+        <Button type="button" onClick={advanceStep} disabled={buttonIsDisabled}>
           Next Question
         </Button>
       )}
       {currentStep === totalSteps && (
-        <Button type="submit">Reveal Hogwarts house!</Button>
+        <Button type="submit" disabled={buttonIsDisabled}>
+          Reveal Hogwarts house!
+        </Button>
       )}
     </FormStyled>
   )
@@ -80,4 +84,9 @@ const Button = styled.button`
   font-family: serif;
   border: 1px solid var(--gryffindor-gold);
   border-radius: 8px;
+
+  &:disabled {
+    color: var(--slytherin-silver);
+    border: 1px solid var(--slytherin-silver);
+  }
 `

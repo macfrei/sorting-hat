@@ -24,7 +24,7 @@ describe('Form', () => {
     expect(screen.getByRole('button', { name: /reveal/i })).toBeInTheDocument()
   })
 
-  it('should render a button with text "Reveal Hogwarts House" when at last question', () => {
+  it('should render a disabled button if no option is chosen', () => {
     render(
       <Form
         questions={[
@@ -43,9 +43,37 @@ describe('Form', () => {
       />
     )
     const nextButton = screen.getByRole('button', { name: /next/i })
+
+    expect(nextButton).toHaveAttribute('disabled')
+  })
+
+  it('should render a button with text "Reveal Hogwarts House" when at last question', () => {
+    render(
+      <Form
+        questions={[
+          {
+            id: 1,
+            question: 'Dawn or dusk?',
+            options: ['Dawn', 'Dusk'],
+          },
+          {
+            id: 2,
+            question: 'Forest or river?',
+            options: ['Forest', 'River'],
+          },
+        ]}
+        onSaveHouse={noop}
+      />
+    )
+
+    userEvent.click(screen.getByLabelText('Dawn'))
+
+    const nextButton = screen.getByRole('button', { name: /next/i })
+
     userEvent.click(nextButton)
 
     const submitButton = screen.getByRole('button', { name: /reveal/i })
+
     expect(submitButton).toBeInTheDocument()
   })
 
