@@ -26,7 +26,6 @@ body {
     font-family: sans-serif;
     font-size: 112.5%;
     line-height: 1.4;
-    font-family: 'Galdeano', sans-serif;
 }
 
 button, input {
