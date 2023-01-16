@@ -75,11 +75,6 @@ const QuestionStyled = styled.fieldset`
     color: white;
   }
 
-  input[type='radio']:checked + label {
-    background: var(--gryffindor-gold);
-    color: white;
-  }
-
   input {
     position: absolute;
     width: 0;
