@@ -29,7 +29,6 @@ export default function Question({ question, options, onChange }) {
 const QuestionStyled = styled.fieldset`
   display: grid;
   place-items: center;
-  grid-template-columns: 1fr 1fr;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 12px;
   border: none;

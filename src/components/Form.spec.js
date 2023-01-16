@@ -5,7 +5,7 @@ import Form from './Form'
 const noop = () => {}
 
 describe('Form', () => {
-  it('should render a group of radio buttons and a button', () => {
+  it('should render a form with a group of radio buttons and a button', () => {
     render(
       <Form
         questions={[
@@ -18,12 +18,13 @@ describe('Form', () => {
         onSaveHouse={noop}
       />
     )
+    expect(screen.getByLabelText('Hogwarts House Quiz')).toBeInTheDocument()
     expect(screen.getByLabelText('Dawn')).toBeInTheDocument()
     expect(screen.getByLabelText('Dusk')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /reveal/i })).toBeInTheDocument()
   })
 
-  it('should render a button with text "submit" when at last question', () => {
+  it('should render a button with text "Reveal Hogwarts House" when at last question', () => {
     render(
       <Form
         questions={[

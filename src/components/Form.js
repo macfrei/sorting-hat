@@ -28,11 +28,13 @@ export default function Form({ questions, onSaveHouse }) {
     <FormStyled onSubmit={handleSubmit}>
       <Question question={question} options={options} onChange={handleChange} />
       {currentStep !== totalSteps && (
-        <button type="button" onClick={advanceStep}>
+        <Button type="button" onClick={advanceStep}>
           Next Question
         </button>
       )}
-      {currentStep === totalSteps && <button>Reveal Hogwarts house!</button>}
+      {currentStep === totalSteps && (
+        <Button type="submit">Reveal Hogwarts house!</Button>
+      )}
     </FormStyled>
   )
 
@@ -59,13 +61,13 @@ const FormStyled = styled.form`
   max-width: 800px;
   padding: 20px;
 
-  button {
-    padding: 8px;
-    border: none;
-    background: transparent;
-    color: var(--gryffindor-gold);
-    font-family: serif;
-    border: 1px solid var(--gryffindor-gold);
-    border-radius: 8px;
+const Button = styled.button`
+  padding: 8px;
+  border: none;
+  background: transparent;
+  color: var(--gryffindor-gold);
+  font-family: serif;
+  border: 1px solid var(--gryffindor-gold);
+  border-radius: 8px;
   }
 `

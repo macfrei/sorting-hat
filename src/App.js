@@ -16,7 +16,7 @@ function App() {
   }
 }
 
-const PageLayout = styled.div`
+const PageLayout = styled.main`
   min-height: 100vh;
   background-color: black;
 
