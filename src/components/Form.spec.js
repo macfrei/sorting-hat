@@ -5,7 +5,7 @@ import Form from './Form'
 const noop = () => {}
 
 describe('Form', () => {
-  it('should render a group of radio buttons and a button', () => {
+  it('should render a form with a group of radio buttons and a button', () => {
     render(
       <Form
         questions={[
@@ -18,12 +18,13 @@ describe('Form', () => {
         onSaveHouse={noop}
       />
     )
+    expect(screen.getByLabelText('Hogwarts House Quiz')).toBeInTheDocument()
     expect(screen.getByLabelText('Dawn')).toBeInTheDocument()
     expect(screen.getByLabelText('Dusk')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /reveal/i })).toBeInTheDocument()
   })
 
-  it('should render a button with text "submit" when at last question', () => {
+  it('should render a disabled button if no option is chosen', () => {
     render(
       <Form
         questions={[
@@ -42,9 +43,37 @@ describe('Form', () => {
       />
     )
     const nextButton = screen.getByRole('button', { name: /next/i })
+
+    expect(nextButton).toHaveAttribute('disabled')
+  })
+
+  it('should render a button with text "Reveal Hogwarts House" when at last question', () => {
+    render(
+      <Form
+        questions={[
+          {
+            id: 1,
+            question: 'Dawn or dusk?',
+            options: ['Dawn', 'Dusk'],
+          },
+          {
+            id: 2,
+            question: 'Forest or river?',
+            options: ['Forest', 'River'],
+          },
+        ]}
+        onSaveHouse={noop}
+      />
+    )
+
+    userEvent.click(screen.getByLabelText('Dawn'))
+
+    const nextButton = screen.getByRole('button', { name: /next/i })
+
     userEvent.click(nextButton)
 
-    const submitButton = screen.getByRole('button', { name: /submit/i })
+    const submitButton = screen.getByRole('button', { name: /reveal/i })
+
     expect(submitButton).toBeInTheDocument()
   })
 
@@ -72,11 +101,19 @@ describe('Form', () => {
     userEvent.click(nextButton)
 
     userEvent.click(screen.getByLabelText('River'))
-    const submitButton = screen.getByRole('button', { name: /submit/i })
+    const submitButton = screen.getByRole('button', { name: /reveal/i })
     userEvent.click(submitButton)
     expect(saveHouse).toHaveBeenCalledWith({
-      'Dawn or dusk?': 'Dawn',
-      'Forest or river?': 'River',
+      1: {
+        answer: 'Dawn',
+        id: 1,
+        question: 'Dawn or dusk?',
+      },
+      2: {
+        answer: 'River',
+        id: 2,
+        question: 'Forest or river?',
+      },
     })
   })
 })

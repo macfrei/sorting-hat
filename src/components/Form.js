@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Question from './Question'
+import useAdvanceStep from '../hooks/useAdvanceStep'
 
 Form.propTypes = {
   questions: PropTypes.arrayOf(
@@ -17,29 +18,45 @@ Form.propTypes = {
 
 export default function Form({ questions, onSaveHouse }) {
   const [formData, setFormData] = useState({})
-  const [currentStep, setCurrentStep] = useState(0)
+
+  const { currentStep, advanceStep, ref } = useAdvanceStep()
 
   const totalSteps = questions.length - 1
-  const { question, options } = questions[currentStep]
+  const { question, options, id } = questions[currentStep]
+
+  const buttonIsDisabled = !formData[id]
 
   return (
-    <FormStyled onSubmit={handleSubmit}>
-      <Question question={question} options={options} onChange={handleChange} />
-      {currentStep !== totalSteps ? (
-        <button type="button" onClick={advanceStep}>
-          Next
-        </button>
-      ) : (
-        <button>Submit</button>
+    <FormStyled onSubmit={handleSubmit} aria-label="Hogwarts House Quiz">
+      <Question
+        question={question}
+        options={options}
+        onChange={event => handleChange(event, id)}
+        ref={ref}
+      />
+      {currentStep !== totalSteps && (
+        <Button type="button" onClick={advanceStep} disabled={buttonIsDisabled}>
+          Next Question
+        </Button>
+      )}
+      {currentStep === totalSteps && (
+        <Button type="submit" disabled={buttonIsDisabled}>
+          Reveal Hogwarts house!
+        </Button>
       )}
     </FormStyled>
   )
 
-  function handleChange(event) {
+  function handleChange(event, id) {
     const { name, value } = event.target
+
     setFormData({
       ...formData,
-      [name]: value,
+      [id]: {
+        id,
+        question: name,
+        answer: value,
+      },
     })
   }
 
@@ -47,13 +64,29 @@ export default function Form({ questions, onSaveHouse }) {
     event.preventDefault()
     onSaveHouse(formData)
   }
-
-  function advanceStep() {
-    setCurrentStep(steps => steps + 1)
-  }
 }
 
 const FormStyled = styled.form`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 60px;
+  gap: 12px;
+  margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+`
+
+const Button = styled.button`
+  padding: 8px;
+  border: none;
+  background: transparent;
+  color: var(--gryffindor-gold);
+  font-family: serif;
+  border: 1px solid var(--gryffindor-gold);
+  border-radius: 8px;
+
+  &:disabled {
+    color: var(--slytherin-silver);
+    border: 1px solid var(--slytherin-silver);
+  }
 `
