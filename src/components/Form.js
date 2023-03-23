@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Question from './Question'
 import useAdvanceStep from '../hooks/useAdvanceStep'
+import Button from './Button'
 
 Form.propTypes = {
   questions: PropTypes.arrayOf(
@@ -74,19 +75,4 @@ const FormStyled = styled.form`
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
-`
-
-const Button = styled.button`
-  padding: 8px;
-  border: none;
-  background: transparent;
-  color: var(--gryffindor-gold);
-  font-family: serif;
-  border: 1px solid var(--gryffindor-gold);
-  border-radius: 8px;
-
-  &:disabled {
-    color: var(--slytherin-silver);
-    border: 1px solid var(--slytherin-silver);
-  }
 `
