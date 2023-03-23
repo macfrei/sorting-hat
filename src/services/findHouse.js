@@ -19,16 +19,19 @@ export default function findHouse(quizResults, questionArray) {
 }
 
 function getHighestOccurrence(houses) {
-  const house = Object.entries(
-    houses.reduce((acc, cur) => {
-      if (cur in acc) {
-        acc[cur]++
-      } else {
-        acc[cur] = 1
-      }
-      return acc
-    }, {})
-  ).sort((a, b) => b[1] - a[1])[0][0]
+  const houseCount = houses.reduce((countedHousesAsObject, currentHouse) => {
+    if (currentHouse in countedHousesAsObject) {
+      countedHousesAsObject[currentHouse]++
+    } else {
+      countedHousesAsObject[currentHouse] = 1
+    }
 
-  return house
+    return countedHousesAsObject
+  }, {})
+
+  const highestOccuringHouse = Object.entries(houseCount).sort(
+    (a, b) => b[1] - a[1]
+  )[0][0]
+
+  return highestOccuringHouse
 }
