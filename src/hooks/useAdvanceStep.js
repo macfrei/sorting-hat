@@ -21,7 +21,7 @@ function useAdvanceStep() {
   const advanceStep = () => {
     setCurrentStep(steps => steps + 1)
     scrollTop()
-    changeTitle(`Question ${currentStep + 1}`)
+    changeTitle(`Question ${currentStep + 2}`)
     setFocus()
   }
 
